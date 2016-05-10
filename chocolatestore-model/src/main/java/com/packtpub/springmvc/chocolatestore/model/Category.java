@@ -1,4 +1,5 @@
 package com.packtpub.springmvc.chocolatestore.model;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -20,54 +21,55 @@ import org.codehaus.jackson.annotate.JsonIgnore;
 @Table(name = "category")
 @XmlRootElement
 public class Category {
-	
+
 	@Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column(name = "id")
-    private Long id;
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Column(name = "id")
+	private Long id;
 
-    @NotNull
-    @Size(max = 100)
-    private String name;
+	@NotNull
+	@Size(max = 100)
+	private String name;
 
-    @NotNull
-    @Size(max = 700)
-    private String description;
+	@NotNull
+	@Size(max = 700)
+	private String description;
 
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "category")
-    private List<Product> products = new ArrayList<Product>();
+	@OneToMany(cascade = CascadeType.ALL, mappedBy = "category")
+	private List<Product> products = new ArrayList<Product>();
 
 	public Long getId() {
-        return this.id;
-    }
+		return this.id;
+	}
 
 	public void setId(Long id) {
-        this.id = id;
-    }
-	
+		this.id = id;
+	}
+
 	public String getName() {
-        return this.name;
-    }
+		return this.name;
+	}
 
 	public void setName(String name) {
-        this.name = name;
-    }
+		this.name = name;
+	}
 
 	public String getDescription() {
-        return this.description;
-    }
+		return this.description;
+	}
 
 	public void setDescription(String description) {
-        this.description = description;
-    }
+		this.description = description;
+	}
+
 	@JsonIgnore
 	public List<Product> getProducts() {
-        return this.products;
-    }
+		return this.products;
+	}
 
 	public void setProducts(List<Product> products) {
-        this.products = products;
-    }
+		this.products = products;
+	}
 
 	@Override
 	public String toString() {
@@ -99,8 +101,4 @@ public class Category {
 		return true;
 	}
 
-	
-
-	
-	
 }
